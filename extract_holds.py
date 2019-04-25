@@ -120,7 +120,7 @@ def get_frame_difference(video):
             x.append(n)
             y.append(1-( cv2.compareHist(hist(f), hist(frames[n+1]), cv2.HISTCMP_BHATTACHARYYA) ) )  # HISTCMP_CORREL
 
-    y = smooth(y, 3)
+    y = smooth(y, 2)
     return x,y, offset
 
 def smooth(y, window):
@@ -169,7 +169,7 @@ def get_key_frames(video):
 
     peak_prop = sorted(peak_prop.items())
     two_highest = peak_prop[:2]
-    frames = [peak[1] for peak in two_highest]
+    frames = sorted([peak[1] for peak in two_highest])
 
     # When a very short video is smoothed, sometimes there are no peaks
     # If this happens we just take one frame from the middle as a peak
