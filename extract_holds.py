@@ -3,7 +3,7 @@
 # The script is based on Calle Börstell make_signs_still.py script for SSL and NGT
 # https://github.com/borstell/make_sign_stills
 
-# This script extracts holds for signs of RSL.
+# This script extracts holds for signs of RSL. 76.7% accuracy
 
 import cv2, os
 import numpy as np
