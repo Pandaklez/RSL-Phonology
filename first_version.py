@@ -42,7 +42,7 @@ def get_frame_difference(video):
     Goes through the histograms of video frames pairwise and returns a list of
     frame indices (x) and histogram differences (y)
     """
-    frames, offset = read_frames(video)
+    frames = read_frames(video)
     x = []
     y = []
     for n,f in enumerate(frames):
@@ -109,9 +109,8 @@ def save_key_frames(video):
     outfile = video.split(".")[0]
     outfile = outfile.split("_")[1]
     outfile = cyrtranslit.to_latin(outfile, 'ru')
-    all_frames, offset = get_key_frames(video)
+    frames = get_key_frames(video)
 
-    frames = [el+offset for el in all_frames]
     count = 1
     filenames = []
     for f in frames:
@@ -129,7 +128,7 @@ def main():
     Iterates over files in directory and creates overlay images of key frames for each .mp4 file
     """
     for f in os.listdir():
-        if f.endswith(".mp4"):
+        if f.endswith("mp4"):
             #plot_changes(f)  # Uncomment if you want to create plots of changes in-between frames
             save_key_frames(f)
 
